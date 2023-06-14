@@ -19,7 +19,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  return value1+value2
+  return value1 + value2;
 }
 
 
@@ -35,7 +35,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-  return value.length
+  return value.length;
 }
 
 /**
@@ -52,7 +52,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-  return `Hello, ${firstName} ${lastName}!`
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -66,8 +66,8 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    let value1= value.split(',').slice(1).join('');
-  return value1.slice(1,value1.length-1);
+  const value1 = value.split(',').slice(1).join('');
+  return value1.slice(1, value1.length - 1);
 }
 
 
@@ -112,10 +112,10 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    let result='';
-    for(let i=0; i<count; i+=1){
-        result += value;
-    }
+  let result = '';
+  for (let i = 0; i < count; i += 1) {
+    result += value;
+  }
   return result;
 }
 
@@ -132,8 +132,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    let arr = str.split(value);
-    return arr[0]+arr.slice(1, arr.length).join(value)
+  const arr = str.split(value);
+  return arr[0] + arr.slice(1, arr.length).join(value);
 }
 
 /**
@@ -148,7 +148,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.slice(1, str.length-1)
+  return str.slice(1, str.length - 1);
 }
 
 
@@ -182,7 +182,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    return str.split(';');
+  return str.split(';');
 }
 
 /**
@@ -208,14 +208,14 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  let cornerTopLeft = '┌';
-  let cornerTopRight = '┐\n';
-  let cornerBottomLeft = '└';
-  let cornerBottomRight = '┘\n';
+  const cornerTopLeft = '┌';
+  const cornerTopRight = '┐\n';
+  const cornerBottomLeft = '└';
+  const cornerBottomRight = '┘\n';
 
-  return cornerTopLeft + '─'.repeat(width-2) + cornerTopRight + 
-         ('│' + ' '.repeat(width-2)+'│\n').repeat(height-2) +
-         cornerBottomLeft + '─'.repeat(width-2) + cornerBottomRight;
+  return cornerTopLeft + '─'.repeat(width - 2) + cornerTopRight
+         + (`│${' '.repeat(width - 2)}│\n`).repeat(height - 2)
+         + cornerBottomLeft + '─'.repeat(width - 2) + cornerBottomRight;
 }
 
 
@@ -235,23 +235,17 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13( str ) {
+function encodeToRot13(str) {
+  const alphabetArr = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  const alphabetROT13Arr = 'nopqrstuvwxyzabcdefghijklm'.split('');
 
-  let alphabetArr = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  let alphabetROT13Arr = 'nopqrstuvwxyzabcdefghijklm'.split('');
-
-  return str.split('').map(x=> 
-    { 
-        if (!alphabetArr.includes(x.toLowerCase())){return x
-        } else {
-            if (x === x.toUpperCase()) {
-                x = alphabetROT13Arr[alphabetArr.indexOf(x.toLowerCase())].toUpperCase();
-                return x;
-            } else {x = alphabetROT13Arr[alphabetArr.indexOf(x)]; return x}};
-        }
-
-  ).join('');
-
+  return str.split('').map((x) => {
+    if (!alphabetArr.includes(x.toLowerCase())) {
+      return x;
+    } if (x === x.toUpperCase()) {
+      return alphabetROT13Arr[alphabetArr.indexOf(x.toLowerCase())].toUpperCase();
+    } return alphabetROT13Arr[alphabetArr.indexOf(x)];
+  }).join('');
 }
 
 /**
@@ -267,7 +261,7 @@ function encodeToRot13( str ) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString( value) {
+function isString(value) {
   return (typeof value === 'string' || value instanceof String);
 }
 
@@ -297,12 +291,12 @@ function isString( value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    let cards = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-    'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-    'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-    'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
+  const cards = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
 
-    return cards.indexOf(value);
+  return cards.indexOf(value);
 }
 
 
