@@ -66,21 +66,13 @@ function getPowerFunction(exponent) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom(/* ...args */) {
-  throw new Error('Not implemented');
-//   const coefficients = args;
-//   return function (x) {
-//     console.dir(x);
-//     console.dir(coefficients);
-//     console.dir(coefficients
-//       .reverse()
-//       .map((item, index) => item * (x ** (index)))
-//       .reduce((a, b) => a + b));
-//     return coefficients
-//       .reverse()
-//       .map((item, index) => item * (x ** (index)))
-//       .reduce((a, b) => a + b);
-//   };
+function getPolynom(...args) {
+  const coefficients = args.reverse();
+  return function getPolynomian(x) {
+    return coefficients
+      .map((item, index) => item * (x ** index))
+      .reduce((a, b) => Number(a) + Number(b));
+  };
 }
 
 
